@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./jquery-3.3.1.min.js"></script>
+  <title>函数</title>
+</head>
+
+<body>
+  <!-- HTML结构 -->
+  <form id="test-form" action="test">
+    <legend>请选择想要学习的编程语言：</legend>
+    <fieldset>
+      <p><label class="selectAll"><input type="checkbox"> <span class="selectAll">全选</span><span class="deselectAll">全不选</span></label> <a href="#0" class="invertSelect">反选</a></p>
+      <p><label><input type="checkbox" name="lang" value="javascript"> JavaScript</label></p>
+      <p><label><input type="checkbox" name="lang" value="python"> Python</label></p>
+      <p><label><input type="checkbox" name="lang" value="ruby"> Ruby</label></p>
+      <p><label><input type="checkbox" name="lang" value="haskell"> Haskell</label></p>
+      <p><label><input type="checkbox" name="lang" value="scheme"> Scheme</label></p>
+      <p><button type="submit">Submit</button></p>
+    </fieldset>
+  </form>
+  <div id="test-highlight1">
+    <p>什么是<span>jQuery</span></p>
+    <p><span>jQuery</span>是目前最流行的<span>JavaScript</span>库。</p>
+  </div>
+  <div id="test-highlight2">
+    <p>什么是<span>jQuery</span> <span>Plugin</span></p>
+    <p>编写<span>jQuery</span> <span>Plugin</span>可以用来扩展<span>jQuery</span>的功能。</p>
+  </div>
+  <!-- HTML结构 -->
+  <div id="test-highlight">
+    <p>如何编写<span>jQuery</span> <span>Plugin</span></p>
+    <p>编写<span>jQuery</span> <span>Plugin</span>，要设置<span>默认值</span>，并允许用户修改<span>默认值</span>，或者运行时传入<span>其他值</span>。</p>
+  </div>
+  <script>
+    var arr2 = ['adam', 'LISA', 'barT']
+    var result2 = arr2.map(el => {
+      return el.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase())
+    })
+
+    var result3 = arr2.map(el => {
+      return el.charAt(0).toUpperCase() + el.slice(1).toLowerCase()
+    })
+
+    console.log(result2)
+
+    var arr3 = ['1', '2', '3']
+    var r;
+    r = arr3.map(el => +el)
+    console.log(r)
+
+    //对象
+    var arr = [1, 2, 3];
+    console.log("arr", arr)
+
+    //事件绑定
+    var
+      form = $('#test-form'),
+      langs = form.find('[name=lang]'),
+      selectAll = form.find('label.selectAll :checkbox'),
+      selectAllLabel = form.find('label.selectAll span.selectAll'),
+      deselectAllLabel = form.find('label.selectAll span.deselectAll'),
+      invertSelect = form.find('a.invertSelect');
+    // 重置初始化状态:
+    form.find('*').show().off();
+    form.find(':checkbox').prop('checked', false).off();
+    deselectAllLabel.hide();
+    // 拦截form提交事件:
+    form.off().submit(function(e) {
+      e.preventDefault();
+      alert(form.serialize());
+    });
+
+    selectAll.on('change', function() {
+      let selectAllCheckbox = selectAll.prop('checked');
+      form.find(':checkbox').prop('checked', selectAllCheckbox);
+      deselectAllLabel.toggle()
+      selectAllLabel.toggle()
+    })
+    invertSelect.on('click', function() {
+      let selectAllCheckbox = selectAll.prop('checked');
+      form.find(':checkbox').prop('checked', !selectAllCheckbox);
+      deselectAllLabel.toggle()
+      selectAllLabel.toggle()
+    })
+    langs.click(function() {
+      if (langs.filter(':checked').length === langs.length) {
+        selectAllLabel.hide()
+        deselectAllLabel.show()
+        selectAll.prop('checked', true)
+      } else {
+        selectAllLabel.show()
+        deselectAllLabel.hide()
+        selectAll.prop('checked', false)
+      }
+    });
+
+    //jquery扩展
+    $.fn.hightlight1 = function() {
+      //this绑定为当前jquery对象
+      this.css('backgroundColor', '#fffceb').css('color', '#d85030');
+      return this;
+    }
+    $('#test-highlight1 span').hightlight1();
+
+    //设置默认参数
+    $.fn.highlight2 = function(options) {
+      let bgColor = options && options.backgroundColor || '#fffceb';
+      let color = options && options.color || '#d85030';
+      this.css('backgroundColor', bgColor).css('color', color);
+      return this;
+    }
+
+    $('#test-highlight2 span').highlight2({
+      backgroundColor: '#00a8e6',
+      color: '#ffffff'
+    });
+
+    //自定义默认值
+    $.fn.highlight = function(options) {
+      var opts = $.extend({}, $.fn.highlight.defaults, options);
+      this.css('backgroundColor', opts.backgroundColor).css('color', opts.color);
+    }
+
+    $.fn.highlight.defaults = {
+      color: '#d85030',
+      backgroundColor: '#fff8de'
+    }
+
+    $.fn.highlight.defaults.color = '#659f13';
+    $.fn.highlight.defaults.backgroundColor = '#f2fae3';
+
+    $.fn.highlight.defaults.color = '#659f13';
+    $.fn.highlight.defaults.backgroundColor = '#f2fae3';
+
+    $('#test-highlight p:first-child span').highlight();
+
+    $('#test-highlight p:last-child span').highlight({
+      color: '#dd1144'
+    });
+  </script>
+</body>
+
+</html>

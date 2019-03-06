@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .alignCenter1 {
+      width: 300px;
+      height: 500px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -250px 0 0 -150px;
+      background-color: blue;
+    }
+    
+    .alignCenter2 {
+      width: 200px;
+      height: 300px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-100px, -150px);
+      background-color: green;
+    }
+    
+    .alignCenter3 {
+      display: flex;
+      align-items: center;
+      /* 垂直居中 */
+      justify-content: center;
+      /* 水平居中 */
+    }
+    
+    .alignCenter3 div {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="alignCenter1"></div>
+  <div class="alignCenter2"></div>
+  <div class="alignCenter3">
+    <div></div>
+  </div>
+</body>
+
+</html>

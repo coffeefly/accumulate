@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .container1 {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .item1 {
+      float: left;
+      margin-right: 10px;
+      width: 20px;
+    }
+    
+    .red {
+      height: 30%;
+      margin-top: 70%;
+      background-color: red;
+    }
+    
+    .gray {
+      height: 80%;
+      margin-top: 20%;
+      background-color: gray;
+    }
+    
+    .green {
+      height: 70%;
+      margin-top: 30%;
+      background-color: green;
+    }
+    
+    .yellow {
+      height: 60%;
+      margin-top: 40%;
+      background-color: yellow;
+    }
+    
+    .black {
+      height: 90%;
+      margin-top: 10%;
+      background-color: black;
+    }
+    
+    .container2 {
+      width: 300px;
+      height: 300px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      background-color: aliceblue;
+    }
+    
+    .item2 {
+      width: 20px;
+    }
+    
+    .item2:nth-child(1) {
+      background-color: red;
+      height: 30%;
+    }
+    
+    .item2:nth-child(2) {
+      background-color: gray;
+      height: 80%;
+    }
+    
+    .item2:nth-child(3) {
+      background-color: green;
+      height: 80%;
+    }
+    
+    .item2:nth-child(4) {
+      background-color: yellow;
+      height: 60%;
+    }
+    
+    .item2:nth-child(5) {
+      background-color: black;
+      height: 90%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container1">
+    <div class="item1 red"></div>
+    <div class="item1 gray"></div>
+    <div class="item1 green"></div>
+    <div class="item1 yellow"></div>
+    <div class="item1 black"></div>
+  </div>
+  <div class="container2">
+    <div class="item2"></div>
+    <div class="item2"></div>
+    <div class="item2"></div>
+    <div class="item2"></div>
+    <div class="item2"></div>
+  </div>
+</body>
+
+</html>

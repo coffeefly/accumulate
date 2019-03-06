@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>hello<q>html</q></p>
+  <script>
+    function out(x) {
+      var temp = 2;
+      return function(y) {
+        document.write(x + y + (++temp));
+      }
+    }
+    var inside = out(3);
+    inside(5);
+    var s1 = "qpzm";
+    var s2 = "qp" + "zm";
+
+    if (s1 == s2) {
+      document.write("s1 == s2 return true");
+    } else {
+      document.write("s1 == s2 return false");
+    }
+    if (s1.equals(s2)) {
+      document.write("s1.equals(s2) return true");
+    } else {
+      document.write("s1.equals(s2) return false");
+    }
+    (function() {
+      var x = y = 10;
+    })();
+    alert(y);
+  </script>
+</body>
+
+</html>

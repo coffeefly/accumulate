@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>数组去重</title>
+</head>
+
+<body>
+  <script>
+    //数组去重的方法
+    //方法1：
+    //把数组值变成对象的内置属性，对象中相同的属性会覆盖，这样就筛选出来了
+    Array.prototype.distinct = function() {
+      var obj = {}
+      var distinctArr = []
+      for (i = 0; i < this.length; i++) {
+        if (!obj[this[i]]) {
+          obj[this[i]] = 'array'
+          distinctArr.push(this[i])
+        }
+      }
+      return distinctArr;
+    }
+
+    var arr = [1, 7, 8, 9, 7, 8, 0, 0, 0, 0, 9, 1, 1, 2, 3, 4, 2, 2, 3, 4, 5, 10, 10, 10, "a", "b", "a", "b", "a", "b"]
+
+    var result = arr.distinct();
+    document.write(result)
+      //利用indexOf去重
+    function unique1(arr) {
+      var result = arr.filter((item, index) =>
+        arr.indexOf(item) === index
+      )
+      return result;
+    }
+    unique1(arr)
+    console.log("数组去重方法二", unique1(arr))
+
+    //数组去重方法三
+    function unipue2(arr) {
+      var temp = [];
+      arr.forEach(item => {
+        if (!temp.includes(item)) {
+          temp.push(item)
+        }
+      })
+      return temp;
+    }
+
+    console.log("数组去重方法三", unipue2(arr))
+  </script>
+</body>
+
+</html>

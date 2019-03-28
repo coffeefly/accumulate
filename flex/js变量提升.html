@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>js变量提升问题</title>
+</head>
+<body>
+    <script>
+      var a=b=1,b=2;
+      console.log("a===b",a===b);
+      var c=d=[1,2];d=[3,4];
+      console.log("c===d",c===d);
+      var f=[1,2];e=[...f];
+      console.log("f===e",e,f===e);
+      var h=i={a:1};i.a=2;
+      console.log("h===i",h,i,h===i);
+      var j=k={a:1};k={a:2}
+      console.log("j===k",j,k,j===k)
+      let {foo}={ha:'baz'};
+     // let {foo:{baz}}={foo:'baz'};
+      let {foo:baz}={foo:'baz'};
+    </script>
+</body>
+</html>

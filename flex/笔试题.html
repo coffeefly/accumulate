@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>简惠笔试题</title>
+</head>
+<body>
+  <script>
+    setTimeout(function(){
+      console.log("111")
+    })
+    new Promise(function(resolve){
+      console.log("222");
+      for(var i=0;i<10000;i++){
+        i==99&&resolve()
+      }
+    }).then(function(){
+      console.log("333")
+    })
+    console.log("444")
+
+    //有一个函数，参数是一个函数，返回值也是一个函数，返回的函数功能和入参的函数相似，但这个函数只能执行3次，再次执行无效，如何实现
+    function sayHi(count){
+      console.log(`Hi ${count} 次！`);
+    }
+    function treeTimes(fn){
+      let times=0;
+      return ()=>{
+        if(times++<3){
+          fn(times);
+        }
+      }
+    }
+    var newFun=treeTimes(sayHi);
+    newFun()
+    newFun()
+    newFun()
+    newFun()
+    newFun()
+    newFun()
+
+    function Foo(){
+      getName=function(){
+        console.log(1)
+      }
+      return this;
+    } 
+    
+    Foo.getName=function(){
+      console.log(2)
+    }
+    Foo.prototype.getName=function(){
+      console.log(3)
+    }
+    var getName=function(){
+      console.log(4)
+    }
+    function getName(){
+      console.log(5);
+    }
+    Foo.getName();
+    getName();
+    Foo().getName();
+    getName();
+    new Foo.getName();
+    new Foo().getName();
+    new new Foo().getName();
+  </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>数组去重</title>
+</head>
+<body>
+  <script>
+    let colors = [{
+					id: 0,
+					colorName: 'red'
+				},
+				{
+					id: 1,
+					colorName: "orange"
+				},
+				{
+					id: 2,
+					colorName: "yellow"
+				},
+				{
+					id: 3,
+					colorName: "green"
+				},
+				{
+					id: 1,
+					colorName: "blue"
+				},
+				{
+					id: 2,
+					colorName: "purple"
+				},
+			]
+      let obj={}
+      let result=colors.reduce((cur,next)=>{
+        obj[next.id]?"":obj[next.id]=true&&cur.push(next);
+        return cur;
+      },[])
+      console.log("result",result)
+      var l='s'
+      l.len=4
+      var s=l.len;
+      console.log(l.len);
+      console.log(performance.timing.responseStart - performance.timing.navigationStart)
+      window.onload = () => {
+    new Date() - performance.timing.responseStart
+    console.log(new Date() - performance.timing.responseStart)
+}
+      
+  </script>
+</body>
+</html>
